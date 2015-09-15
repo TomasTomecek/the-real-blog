@@ -1,0 +1,3 @@
+[submodule "themes/yes-fancy"]
+	path = themes/yes-fancy
+	url = git@github.com:TomasTomecek/yes-fancy.git

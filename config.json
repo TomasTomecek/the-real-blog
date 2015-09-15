@@ -1,0 +1,10 @@
+{
+   "baseurl": "http://blog.tomecek.net/",
+   "languageCode": "en-us",
+   "title": "Blog | Tomáš Tomeček",
+   "theme": "yes-fancy",
+   "author": {
+        "name": "Tomáš Tomeček",
+        "github": "TomasTomecek"
+   }
+}
