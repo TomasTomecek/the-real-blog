@@ -1,6 +1,3 @@
-[submodule "themes/yes-fancy"]
-	path = themes/yes-fancy
-	url = git@github.com:TomasTomecek/yes-fancy.git
 [submodule "themes/hugo-steam-theme"]
 	path = themes/hugo-steam-theme
 	url = https://github.com/digitalcraftsman/hugo-steam-theme
