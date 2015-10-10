@@ -1,6 +1,6 @@
 +++
 date = "2014-10-12T00:00:00+02:00"
-draft = true
+draft = false
 title = "Compiling kernel on gentoo"
 tags = ["gentoo", "linux"]
 
