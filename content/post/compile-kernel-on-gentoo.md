@@ -26,7 +26,7 @@ $ eselect kernel set
 $ cp /usr/src/linux-*/.config /usr/src/linux/
 $ cd /usr/src/linux
 # why would you compile kernel as root?
-$ chown -R "regular_user" /usr/src/linux
+$ chown -R "regular_user" /usr/src/linux/
 $ su - "regular_user"
 # lots of ynynnynnyynn
 $ make oldconfig
@@ -34,7 +34,7 @@ $ make
 $ su -
 $ make install
 $ make modules_install
-$ initramfs genkernel
+$ genkernel initramfs
 $ grub2-mkconfig -o /boot/grub/grub.cfg
 $ reboot
 ```
