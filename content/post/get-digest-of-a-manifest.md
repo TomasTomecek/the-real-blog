@@ -5,13 +5,15 @@ title = "How hard is it to get a digest of a docker image's manifest?"
 
 +++
 
+**Update (October 13th)**: The encoding mismatch is made on purpose as described [in this issue](https://github.com/docker/distribution/issues/1065). The current work is present in [this repo](https://github.com/TomasTomecek/digest-of-a-manifest).
+
 So I needed to get a digest of a manifest. Manifest is a text file in JSON format which contains metadata for a docker image. Manifest is part of v2 docker registry API.
 
-We want to have this functionality (manifest → digest) in [pulp](http://www.pulpproject.org/) so I needed to do that in python. I guess it would pretty easy to do in Go because I would be able to use code from distribution directly.
+We want to have this functionality (`f(manifest) → digest`) in [pulp](http://www.pulpproject.org/) so I needed to do that in python. I guess it would pretty easy to do in Go because I would be able to use code from distribution directly.
 
 <!--more-->
 
-<script src="https://gist.github.com/TomasTomecek/2bd7cca85ee1a70725fb.js"></script>
+Former work was present in [this gist](https://gist.github.com/TomasTomecek/2bd7cca85ee1a70725fb).
 
 It would have been pretty easy to do, since you just need to compute sha256 hash sum of the manifest. Compute a sum you say? That's a one-liner. Except:
 
@@ -65,9 +67,9 @@ Eiwwww. What's that? I typed `ý`, not `ÃÂ½`. And why `<` and `>` are writt
 
 ```
 $ docker history --no-trunc ugly
-IMAGE          CREATED             CREATED BY                                                                                         SIZE
-a1480b88c753   7 minutes ago       /bin/sh -c #(nop) LABEL a=ÃÂ½                                                                  0 B
-99b012efab6a   7 minutes ago       /bin/sh -c #(nop) MAINTAINER My name is wéířĎ "cuz' I like that" <mail@example.com                 0 B
+IMAGE          CREATED         CREATED BY                                                                           SIZE
+a1480b88c753   7 minutes ago   /bin/sh -c #(nop) LABEL a=ÃÂ½                                                    0 B
+99b012efab6a   7 minutes ago   /bin/sh -c #(nop) MAINTAINER My name is wéířĎ "cuz' I like that" <mail@example.com   0 B
 ```
 
 That's better, but the label still looks pretty bad.
