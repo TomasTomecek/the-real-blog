@@ -1,7 +1,8 @@
 +++
 date = "2015-10-27T14:29:33+01:00"
-draft = true
+draft = false
 title = "build docker engine in fedora"
+tags = ["docker", "linux", "fedora"]
 
 +++
 
