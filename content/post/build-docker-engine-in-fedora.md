@@ -9,14 +9,13 @@ tags = ["docker", "linux", "fedora"]
 It's not that hard, here are a couple pain points:
 
  * **make sure that `GOPATH` is right** — you want to compile against your checked out docker, not master docker
+<!--more-->
 ```
 └── src
     └── github.com
         └── docker
             └── docker -> git/docker
 ```
-
-<!--more-->
 
  * **compile `dynbinary`, not `binary`** — otherwise you'll get
 ```
