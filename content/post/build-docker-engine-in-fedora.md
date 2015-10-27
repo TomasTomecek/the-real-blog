@@ -1,7 +1,7 @@
 +++
 date = "2015-10-27T14:29:33+01:00"
 draft = false
-title = "build docker engine in fedora"
+title = "Build docker engine on Fedora"
 tags = ["docker", "linux", "fedora"]
 
 +++
@@ -15,6 +15,8 @@ It's not that hard, here are a couple pain points:
         └── docker
             └── docker -> git/docker
 ```
+
+<!--more-->
 
  * **compile `dynbinary`, not `binary`** — otherwise you'll get
 ```
