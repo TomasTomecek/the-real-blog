@@ -8,6 +8,8 @@ tags = ["git", "python", "pip"]
 
 It may happen that you need to install a python project with pip from git(hub). That's pretty easy:
 
+<!--more-->
+
 ```
 pip install --user -U git+git://github.com/TomasTomecek/sen.git
 ```
