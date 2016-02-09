@@ -21,6 +21,7 @@ Split your build process into two steps, each step represents its own dockerfile
 
 2. Get build artifacts from step 1 and install them.
 
+<!--more-->
 
 ## Let's do this!
 
