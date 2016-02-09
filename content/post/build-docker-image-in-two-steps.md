@@ -6,10 +6,24 @@ tags = ["docker"]
 
 +++
 
-It may happen that you need to authenticate with an external service when
-building a docker image. In order to do that, you need to have a secret
-available during build. That's a problem. This key will leak into a final image
-(whether via `docker history` or will be available directly in some layer).
+So I got asked about this topic after my DevConf 2016
+[talk](https://devconfcz2016.sched.org/event/5lzf/is-it-hard-to-build-a-docker-image):
+there is [a
+solution](https://github.com/docker/docker/issues/13490#issuecomment-156554857)
+available on internets which describes how one can use two dockerfiles to build
+an image. Whole article can be found [
+here](http://resources.codeship.com/ebooks/continuous-integration-continuous-delivery-with-docker).
+
+What I didn't like about the solution is that the first image outputs whole
+build artifact as a tarball to standard output. To me that's a bit hacky. Since
+docker 1.8 you can `cp` files and directories between containers and host.
+Let's try to do that!
+
+All of this is because of build secrets. It may happen that you need to
+authenticate with an external service when building a docker image. In order to
+do that, you need to have a secret available during build. That's a problem.
+This key may leak into a final image (whether via `docker history` or will be
+available directly in some layer).
 
 Here's a solution!
 
@@ -96,11 +110,3 @@ Key is not in final image
 
 Whole solution is available in [this GitHub repo](https://github.com/TomasTomecek/two-step-build).
 
-You need docker 1.8+ in order to make this work.
-
-There is [an
-article](http://resources.codeship.com/ebooks/continuous-integration-continuous-delivery-with-docker)
-available linked from [this
-comment](https://github.com/docker/docker/issues/13490#issuecomment-156554857).
-The solutions is very similar, the only difference is a way of passing build
-artifacts.
