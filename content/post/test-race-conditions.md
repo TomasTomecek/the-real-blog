@@ -1,6 +1,6 @@
 +++
 date = "2016-05-17T12:20:46+02:00"
-draft = true
+draft = false
 title = "Simple way to check for race conditions"
 
 +++
