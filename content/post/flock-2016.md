@@ -63,3 +63,13 @@ Here is a list of my notes:
  * CoW storage management tool: [containers/storage](https://github.com/containers/storage)
  * ocid - container management API
   * Implements k8s container runtime interface
+
+
+## Modularity
+
+ * Was super excited about this: Langdon delivered an awesome presentation
+ * Workshop was also very active: everyone asked questions and tried to be part of the discussion
+ * tl;dr modules are yum repos and they are built in a funky way in koji using custom tooling
+ * It takes time to built even a simple module
+ * AND IT WORKS!
+ * https://fedoraproject.org/wiki/Modularity
