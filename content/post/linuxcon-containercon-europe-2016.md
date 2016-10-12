@@ -12,6 +12,27 @@ Here are my assorted notes from some `${subject}` talks.
 (Blame me, not speakers, for any untruths in these notes.)
 
 
+## Keynote: Incremental Revolution - What Docker Learned from the Open-Source Fire Hose - Solomon Hykes, Founder, CTO and Chief Product Officer, Docker
+ * Incremental revolution
+ * Tools of mass innovation
+ * [Similar to a DockerCon 2015 keynote]
+ * Programmable internet would be a tool of mass innovation
+ * Docker is building a stack: standards → infra → dev platform → product
+ * Docker is 250 people
+ * With open source they get a lot of contributions
+ * Borrowed some open source rules form Linux kernel
+ * Linux started with plumbing, Docker started with the product
+  * Plumbing along the way
+ * Docker is solving problems
+  * e.g. Docker for Mac, Docker for AWS
+ * Demo
+  * [showcases docker on Mac]
+  * [showcases docker on AWS - clicky interface]
+ * Infrakit - new open source project
+  * [was opensourced live]
+  * [for more info see notes below]
+
+
 ## Putting the Parts Together: Building a Secure Container Platform - Matthew Garrett, CoreOS
 
  * Multilayer security: container → runtime → kernel → firmware
