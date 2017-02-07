@@ -15,6 +15,7 @@ While notmuch does not support, nor ever will, the deleting of messages...
 
 That's a fact. But what if it could help you with that? A lot actually.
 
+<!--more-->
 
 I reached my quota. And there was no way to remove messages in bulk with standard web interface (I wanted to get rid of ~30k messages). The filter I wanted to use was quite simple:
 
