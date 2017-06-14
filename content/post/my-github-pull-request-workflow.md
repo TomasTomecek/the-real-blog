@@ -79,7 +79,7 @@ commits you are proposing. Rebasing commits present in upstream will usually
 make the pull request un-mergable.
 
 In case you screwed badly, it's easy to recover. Just reset your branch to the
-state of upstream master and start cherry-picking commits from your branch:
+state of upstream master and start cherry-picking commits from the feature branch:
 
 ```shell
 $ git branch checkpoint-of-the-best-feature
