@@ -13,9 +13,17 @@ part of the discussions, but at the same time, I missed big talks. Also some
 talks with similar topics were scheduled at the same time, so one had to make
 tough choices.
 
-Here are some of my assorted notes.
-
 <!--more-->
+
+One of the most visible things one could see during Flock were comics
+portraits! These were drawn by a professional artist. Everyone was running
+around with a portrait of their own, I loved this! The booth was sponsored by
+RHEL product marketing team.
+
+![How cool is that?!](/img/comics_portrait.jpg)
+
+Here are some of my assorted notes from talks and workshops I attended.
+
 
 ## Keynote
 Matt was running his favorite graphs and current state of the art. They were
@@ -65,6 +73,8 @@ easier.
   * E.g. for container images:
     * When RPM hits stable (slower workflow).
     * When RPM (or module) passes tests (faster workflow).
+
+![Jan talking about freshmaker](/img/jkaluza_freshmaker.jpg)
 
 
 ## Greenwave & WaiverDB
