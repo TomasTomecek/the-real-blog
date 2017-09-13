@@ -1,6 +1,6 @@
 ---
 title: "Building container image with modular OS from scratch"
-date: 2017-08-31T16:27:47+02:00
+date: 2017-09-13T16:27:47+02:00
 draft: false
 ---
 
