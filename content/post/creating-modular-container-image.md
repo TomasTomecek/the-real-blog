@@ -15,6 +15,8 @@ The container image can be created using Image Factory, which can be really
 tough to set up. So I figured out a different, simpler solution. Let's give it
 a shot!
 
+<!--more-->
+
 We need two things to create a container image from scratch:
 
 1. package manager
@@ -85,7 +87,8 @@ within our working container at `/container`.
 
 Before we start, do you remember why Sinny wants this container?
 
-Yes, she wants to try other architecture then `x86_64`. Let's pick ppc64le.
+Yes, she wants to try other architecture than `x86_64`. Let's pick `ppc64le`.
+
 
 The command we'll use to install packages is this one:
 ```
