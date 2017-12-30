@@ -1,4 +1,4 @@
-baseurl = "http://blog.tomecek.net/"
+baseurl = "https://blog.tomecek.net/"
 languageCode = "en-us"
 title = "Blog | Tomáš Tomeček"
 theme = "hugo-steam-theme"
