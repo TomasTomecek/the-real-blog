@@ -4,4 +4,4 @@ draft = true
 title = "About"
 +++
 
-Tall software engineer, teacher, hacker, speaker, coder, linux enthusiast. Working with docker a lot lately, trying it to integrate into Red Hat's infrastructure.
+Tall software engineer, teacher, hacker, speaker, coder, linux enthusiast. Doing containers past 3 years.
