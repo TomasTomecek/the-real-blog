@@ -118,7 +118,7 @@ So, what's happening here?
  3. Once the container is running, we need to add it to Ansible's inventory. We
     are also setting that host (the container) to be available via docker
     connection plugin.
- 4. We're are ready to run the role! The snippet is actually taken from
+ 4. We are ready to run the role! The snippet is actually taken from
     [Ansible
     documentation](http://docs.ansible.com/ansible/latest/intro_inventory.html#non-ssh-connection-types).
  5. Our container is provisioned, we can commit, thus making a container image.
@@ -202,7 +202,7 @@ $ curl -s 172.17.0.2 | grep title
 
 Yep, it does.
 
-That was pretty mindblowing, right? But we can still do better
+That was pretty mindblowing, right? But we can still do better.
 
 
 ## Now without daemons
@@ -220,7 +220,6 @@ to be changed a lot. So let's add support for buildah to it!
 ---
 - hosts: localhost
   connection: local
-  # gather_facts: false
   vars:
     image: fedora:27
     container_name: build_container
@@ -275,15 +274,19 @@ to be changed a lot. So let's add support for buildah to it!
 
 What we did?
 
- * We kept the existing code and just wrapped docker-specific tasks with `when: container_engine == 'docker'`.
+ * We kept the existing code and just wrapped docker-specific tasks with `when:
+   container_engine == 'docker'`.
  * We added more tasks specific to `buildah`.
  * Two tasks needed almost no changes: role execution and inventory update.
 
 Let's get briefly through the additions:
 
- * Command `buildah from` fetches an image if it's not present locally and creates a container out of it. Two in one.
- * `buildah` has a dedicated command, `config`, to change container image metadata.
- * And finally we just commit the container. It's pretty awesome that you can put the image inside local dockerd.
+ * Command `buildah from` fetches an image if it's not present locally and
+   creates a container out of it. Two in one.
+ * `buildah` has a dedicated command, `config`, to change container image
+   metadata.
+ * And finally we just commit the container. It's pretty awesome that you can
+   put the image inside local docker daemon.
 
 
 Let's build using buildah:
@@ -415,7 +418,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 docker.io/nginx     latest              8f1aaab79770        25 seconds ago      268 MB
 ```
 
-Looks about right. Does it work?
+Looks okay. Does it work?
 ```console
 $ docker run -d docker.io/nginx
 3165ec03253bae24951d20ab7a4a3905f824b67304eca16ae0ce9ca01504c411
@@ -446,8 +449,8 @@ in it](https://github.com/ansible/ansible-container/pull/790).
 It's likely that you may need to tinker with your roles a bit to make them work
 in containers. The same will apply for roles from [Ansible
 Galaxy](https://galaxy.ansible.com/). While working on this blog post, I tried
-several, popular, nginx Ansible roles from Ansible Galaxy and got to be honest,
-none of them worked in container environemnt out of the box.
+several popular nginx Ansible roles from Ansible Galaxy and got to be honest,
+none of them worked in container environment out of the box.
 
 And finally, I can't wait to start running my containers with
 [podman](https://github.com/projectatomic/libpod/blob/master/docs/podman.1.md).
