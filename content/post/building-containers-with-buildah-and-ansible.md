@@ -22,12 +22,12 @@ builds — from an Ansible role to a container image.
 
 ## Let's start
 
-...with the Ansible role itself. If you are not familar with the role concept,
+...with the Ansible role itself. If you are not familiar with the role concept,
 look at [the excellent Ansible
 documentation](http://docs.ansible.com/ansible/latest/playbooks_reuse_roles.html).
 
-We will create a simple role which just installs nginx. Since I'm most familar
-with
+We will create a simple role which just installs nginx. Since I'm most
+comfortable with
 [Fedora](https://download.fedoraproject.org/pub/fedora/linux/releases/27/Docker/x86_64/images/Fedora-Docker-Base-27-1.6.x86_64.tar.xz),
 that's what we'll use. Feel free to use the base image which you are most
 familiar with.
@@ -43,9 +43,9 @@ $ cat roles/sample-nginx/tasks/main.yml
   command: dnf clean all
 ```
 
-Simple and straightforward. Just install nginx package and clean packager
-metadata -- we don't want those linger in the image. Just look at how much
-useless data you may get. With metadata:
+Simple and straightforward. Just install nginx package and clean package
+manager metadata -- we don't want those linger in the image. Just look at how
+much useless data you may get. With metadata:
 ```console
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 nginx               latest              fefdf36aa71b        14 seconds ago      441 MB
@@ -423,6 +423,7 @@ $ docker run -d docker.io/nginx
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                  PORTS               NAMES
 3165ec03253b        docker.io/nginx     "nginx -g 'daemon ..."   2 seconds ago       Up Less than a second                       kind_mayer
+
 $ curl -s 172.17.0.2 | grep title
         <title>Test Page for the Nginx HTTP Server on Fedora</title>
 ```
