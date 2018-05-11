@@ -144,7 +144,7 @@ In [6]: podman.InspectImage("docker.io/library/fedora:27")
 Out[6]: {'image': '{"Id":"9110ae7f579f35ee0c3938696f23fe0f5fbe641738ea52eb83c2df7e9995fa17","Digest":"sha256:8f97ccd...
 ```
 
-Unfortunately, [`PullImage` did not work](https://github.com/projectatomic/libpod/issues/743) and `CreateContainer` is not implemented, yet.
+~~Unfortunately, [`PullImage` did not work](https://github.com/projectatomic/libpod/issues/743)~~ (edit: we resolved this) and `CreateContainer` is not implemented, yet.
 
 
 ## Operator framework
@@ -155,3 +155,55 @@ Red Hat recently open sourced the Operator framework originally developed by Cor
  * [Getting started](https://github.com/operator-framework/getting-started)
 
 Unfortunuately I did not have time to dig through.
+
+
+**Edit**:
+
+I got a really nice pointer from my colleagues how you can work with varlink via CLI.
+
+First, you should install `libvarlink-util`. This package will add `varlink` binary to your system.
+
+You can use it to discover varlink interface provided by a service:
+
+```
+$ varlink help unix:/run/io.projectatomic.podman/io.projectatomic.podman
+
+# ListContainer is the returned struct for an individual container
+type ListContainerData (
+  id: string,
+  image: string,
+  imageid: string,
+  command: []string,
+  createdat: string,
+  runningfor: string,
+  status: string,
+  ports: []ContainerPortMappings,
+  rootfssize: int,
+  rwsize: int,
+  names: string,
+  labels: [string]string,
+  mounts: []ContainerMount,
+  containerrunning: bool,
+  namespaces: ContainerNameSpace
+)
+
+# System
+method Ping() -> (ping: StringResponse)
+
+method GetVersion() -> (version: Version)
+
+# Containers
+method ListContainers() -> (containers: []ListContainerData)
+
+method GetContainer(name: string) -> (container: ListContainerData)
+
+...
+```
+
+and you can also invoke varlink calls from CLI:
+```
+$ varlink call -m unix:/run/io.projectatomic.podman/io.projectatomic.podman.PullImage '{"name": "docker.io/library/fedora:28"}'
+{
+  "id": "cc510acfcd701a409014118d5f417f0022520802a26c650866b8a9594d75f3a7"
+}
+```
