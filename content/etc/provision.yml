@@ -1,0 +1,34 @@
+---
+- name: Install kata containers
+  hosts: all
+  become: true
+  tasks:
+  - dnf:
+      name: dnf-plugins-core
+      state: latest
+  - command: dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/katacontainers:/release/Fedora_28/home:katacontainers:release.repo
+  - command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  - dnf:
+      name: '{{ item }}'
+      state: latest
+    with_items:
+    - kata-runtime
+    - kata-proxy
+    - kata-shim
+    - docker-ce
+    - kernel-modules
+  - file:
+      state: directory
+      path: /etc/systemd/system/docker.service.d/
+  - command: modprobe -a kvm kvm_intel
+  - copy:
+      dest: /etc/systemd/system/docker.service.d/kata-containers.conf
+      content: |
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/dockerd -D --add-runtime kata-runtime=/usr/bin/kata-runtime --default-runtime=kata-runtime
+  - systemd:
+      name: docker
+      state: restarted
+      daemon_reload: true
+
