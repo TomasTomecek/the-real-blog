@@ -1,7 +1,7 @@
 +++
 date = "2018-07-17T09:26:23+02:00"
 title = "UEFI + LUKS + NVMe can be fun"
-draft = true
+draft = false
 tags = ["linux"]
 
 +++
