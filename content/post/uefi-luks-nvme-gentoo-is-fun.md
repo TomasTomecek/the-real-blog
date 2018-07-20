@@ -10,8 +10,8 @@ Recently I get a new laptop at work. I finally wanted to make my dream come
 true and install [Gentoo
 Linux](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation) on it.
 I've installed Gentoo already a few times so this wasn't a big deal.
-Installing Gentoo is actually an awesome experience I learnt so much when doing
-it for the first time. Everything went fine until I decided to install
+Installing Gentoo is actually an awesome experience. I learnt so much when doing
+it for the first time. This time, everything went fine until I decided to install
 bootloader and boot the thing.
 
 So what went wrong?
