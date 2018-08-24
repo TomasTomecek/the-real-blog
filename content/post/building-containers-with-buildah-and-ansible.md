@@ -5,6 +5,9 @@ tags: ["Ansible", "containers", "linux", "Fedora", "buildah"]
 draft: false
 ---
 
+**Update**: I started a tool which simplifies all of this into a single
+command: [TomasTomecek/ab](https://github.com/TomasTomecek/ab).
+
 Do you use Ansible roles to provision your infrastructure? And would you like
 to use those very same roles to create container images? You came to the right
 place!
