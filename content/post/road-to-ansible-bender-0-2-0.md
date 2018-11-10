@@ -232,8 +232,8 @@ Can't wait to use ab more for my other projects in future.
 
 At the same time, ab is very fresh and probably not bug-free (I use it, there
 is a solid test suite but I can't catch everything). While I was writing this
-code, I discovered two bugs which I fixed just now and am about to roll out
-`0.2.1`.
+blog post, I discovered two bugs which I fixed just now and am about to roll
+out `0.2.1`.
 
 So if you run into some strange behavior, please report it.
 
