@@ -10,6 +10,8 @@ For the past couple of months, I've been working on a project we call "Ansible
 OCI image builder". I named the tool itself [ansible-bender](https://github.com/TomasTomecek/ansible-bender) (and yes, it’s
 shiny).
 
+<!--more-->
+
 ### Current status
 I'm using it almost for 2 months now. There are some bumps
 [here](https://github.com/TomasTomecek/ansible-bender/issues/21) and
