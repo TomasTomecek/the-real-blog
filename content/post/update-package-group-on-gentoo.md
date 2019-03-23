@@ -8,6 +8,8 @@ tags: ["gentoo", "linux", "portage"]
 I wanted to update my gentoo box once again. I did last update probably ~6
 months ago. This usually means for me that I get a ton of conflicts:
 
+<!--more-->
+
 ```
 These are the packages that would be merged, in order:
 
