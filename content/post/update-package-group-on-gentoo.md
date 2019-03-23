@@ -36,7 +36,7 @@ qt stack in one transaction. Sadly, it did not and I realized that I had to tell
 The easiest solution I came up with was using `equery`: get installed packages
 from dev-qt category:
 ```bash
-$  equery l dev-qt/* -F '$category/$name'
+$ equery l dev-qt/* -F '$category/$name'
 dev-qt/linguist-tools
 dev-qt/qtchooser
 dev-qt/qtconcurrent
