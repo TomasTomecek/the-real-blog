@@ -4,6 +4,7 @@ title = "Blog | Tomáš Tomeček"
 theme = "hugo-steam-theme"
 disqusShortname = "tomastomecek"
 paginate = 7
+rssLimit = 7
 
 [taxonomies]
 
