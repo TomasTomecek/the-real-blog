@@ -22,7 +22,7 @@ actually achieve such glorious service contribution model?
 <!--more-->
 
 Please don't expect to get an end-to-end guide here - that would take a book to
-write, instead I'd love to point you to the right direction.
+write, instead I intend to give you a few advices how to proceed.
 
 
 ## How do I even start?
@@ -31,22 +31,12 @@ The beginning of your journey should be to set goals: clearly define your
 milestones (ideally with acceptance criteria) and start working towards that
 goal.
 
-Let's say our end-goal is
+Stef already wrote [a list of well-defined
+stages](https://github.com/stefwalter/stefwalter.github.io/blob/main/playbook.md)
+which you can embrace on your journey. It means that our end-goal then is:
 
     All changes proposed against project's repositories are deployed to a
     playground where contributors can try them out.
-
-That's our final milestone. Let's define goals leading up to it:
-
-0. The service can be deployed reliably within any OS.
-1. A contributor can deploy a change locally by running only a single command.
-2. The playground is identified and set up.
-3. A bot listens to merged PRs on all projects and deploys them to the
-   playground.
-4. A bot listens to new PRs on all projects and deploys them to a new
-   playground instance.
-5. A bot posts a link to a pull request once the contribution is deployed in
-   the playground.
 
 One note here is that certain milestones can have requirements: you may state
 that a certain container engine needs to be available to achieve a milestone.
@@ -54,17 +44,18 @@ that a certain container engine needs to be available to achieve a milestone.
 
 ## Asking again: how do I start?
 
-I'm sure the list above can be intimidating. The technology that helped us to
-get rid of the despair was [containers and OpenShift](https://openshift.com/).
-That's what the item 0) is about - be able to build container images of your
-service no matter the developer's OS.
-
-Now it should be more clear how we can achieve the end-goal.
+10 stages, sounds pretty intimidating. The technology that helped us to move up
+the ladder was [containers and OpenShift](https://openshift.com/). That's what
+the stage 3 is about - be able to build container images of your service no
+matter the developer's OS and deploy them into k8s or OpenShift.
 
 
 ## What tools do I use?
 
-The main tool which will help you is... Automation!
+Containers and OpenShift are clear at this point and that should narrow our
+scope.
+
+The next main tool which will help you is... Automation!
 
 If you need to do manual steps to achieve parts of the development workflow,
 it's just a burden which is holding you back to progress further. The
@@ -86,7 +77,8 @@ cases.
 
 The principle remains the same though: use continuous integration to verify the
 change passes automated tests and continuous delivery for users and developers
-to try the change before (or after) it's merged.
+to try the change before (or after) it's merged with as little disruption in
+production as possible.
 
 
 ## Last words
