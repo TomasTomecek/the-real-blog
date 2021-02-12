@@ -47,8 +47,9 @@ it was probably a race condition (spoiler: it wasn't) or a problem in the
 filesystem or [EBS](https://aws.amazon.com/ebs/) (spoiler: not even close).
 
 Vasek clearly told me: "since the error happens with the same file all the
-time, it's a bug in the application", which I downplayed in my head. But he was
-**freakin' RIGHT**!!1!
+time, it's a bug in the application", which I downplayed in my head. I did not
+know at the time that Vasek was actually right as I would discover in the
+evening.
 
 
 ## Step 1 (initial analysis)
