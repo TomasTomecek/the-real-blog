@@ -41,3 +41,4 @@ tag = "tags"
 	backtotopStr = "Back to top"
 	shareStr = "Share"
 	pageNotFoundTitle = "404 - Page not found"
+    useSummaryIfNoDescription = true
