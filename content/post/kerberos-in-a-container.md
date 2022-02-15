@@ -9,7 +9,7 @@ atgs = ["linux", "containers", "lolz"]
 This is a quick one.
 
 We have a bot which uses Kerberos for authentication with other services. Of
-course we run our bot army in containers within
+course we run our bot army as containers in
 [OpenShift](https://github.com/openshift/origin).
 
 How do we do it? How can we use Kerberos inside linux containers?
@@ -39,88 +39,49 @@ klist: Invalid UID in persistent keyring name while getting default ccache
 ### Solution
 
 The main issue is that Kerberos by default stores credentials inside [kernel
-keyring](http://man7.org/linux/man-pages/man7/keyrings.7.html). Keyring
-is not namespaced, so this is a privileged operation.
+keyring](http://man7.org/linux/man-pages/man7/keyrings.7.html). ~~Keyring
+is not namespaced, so this is a privileged operation~~.
 ```
 [pid 19198] keyctl(KEYCTL_GET_PERSISTENT, 1000, KEY_SPEC_PROCESS_KEYRING) = -1 EPERM (Operation not permitted)
 ```
+
+**EDIT Feb 2022**: [Keyrings are now aware of namespaces](https://lwn.net/Articles/779895/).
 
 Solution is really easy. Just change the method how the [ticket granting ticket](https://web.mit.edu/kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-admin/The-Ticket_002dGranting-Ticket.html)
 should be stored and that's it. Therefore we'll just store it in a file and
 we're done.
 
+**EDIT Feb 2022**: I wasn't able to store the TGT in the (namespaced) kernel
+keyring in a unprivileged container so the solution applies still.
+
 So let's launch a container using [podman](https://github.com/projectatomic/libpod/), we'll bind-mount the Kerberos configuration from host inside the container. Notice, no `--cap-add` nor `--privileged`.
 ```
-+ sudo podman run -it -v /etc/krb5.conf:/etc/krb5.conf -v /etc/krb5.conf.d/:/etc/krb5.conf.d/ registry.fedoraproject.org/fedora:28 bash
-Trying to pull registry.fedoraproject.org/fedora:28...Getting image source signatures
-Copying blob sha256:548d1dae8c2b61abb3d4d28a10a67e21d5278d42d1f282428c0dcbba06844c2c
- 85.59 MB / 85.59 MB [====================================================] 1m6s
-Copying config sha256:426866d6fa419873f97e5cbd320eeb22778244c1dfffa01c944db3114f55772e
- 1.27 KB / 1.27 KB [========================================================] 0s
-Writing manifest to image destination
-Storing signatures
++ podman run -it -v /etc/krb5.conf:/etc/krb5.conf -v /etc/krb5.conf.d/:/etc/krb5.conf.d/ fedora:35 bash
 ```
 
 We should install Kerberos tooling now:
 ```
-[root@101ff1a35d4d /]# dnf install krb5-workstation
-Fedora 28 - x86_64 - Updates                                                  5.0 MB/s | 7.1 MB     00:01
-Fedora 28 - x86_64                                                            4.6 MB/s |  60 MB     00:13
-Last metadata expiration check: 0:00:03 ago on Mon May 14 13:11:33 2018.
+[root@157d96c3df2e /]# dnf install fedora-packager-kerberos
+Last metadata expiration check: 0:00:37 ago on Tue Feb 15 09:19:06 2022.
 Dependencies resolved.
-================================================================================================================
- Package                       Arch              Version                       Repository                  Size
-================================================================================================================
+=================================================================================
+ Package                                                             Architecture
+=================================================================================
 Installing:
- krb5-workstation              x86_64            1.16.1-2.fc28                 updates                    913 k
-Upgrading:
- krb5-libs                     x86_64            1.16.1-2.fc28                 updates                    801 k
+ fedora-packager-kerberos                                            noarch      
 Installing dependencies:
- libkadm5                      x86_64            1.16.1-2.fc28                 updates                    176 k
- libss                         x86_64            1.43.8-2.fc28                 fedora                      51 k
+ krb5-pkinit                                                         x86_64      
+ krb5-workstation                                                    x86_64      
+ libkadm5                                                            x86_64      
+ libss                                                               x86_64      
 
 Transaction Summary
-================================================================================================================
-Install  3 Packages
-Upgrade  1 Package
+=================================================================================
+Install  5 Packages
 
-Total download size: 1.9 M
+Total download size: 779 k
+Installed size: 3.6 M
 Is this ok [y/N]: y
-Downloading Packages:
-(1/4): libss-1.43.8-2.fc28.x86_64.rpm                                           750 kB/s |  51 kB     00:00
-(2/4): libkadm5-1.16.1-2.fc28.x86_64.rpm                                        1.5 MB/s | 176 kB     00:00
-(3/4): krb5-workstation-1.16.1-2.fc28.x86_64.rpm                                2.6 MB/s | 913 kB     00:00
-(4/4): krb5-libs-1.16.1-2.fc28.x86_64.rpm                                       988 kB/s | 801 kB     00:00
-----------------------------------------------------------------------------------------------------------------
-Total                                                                           726 kB/s | 1.9 MB     00:02
-Running transaction check
-Transaction check succeeded.
-Running transaction test
-Transaction test succeeded.
-Running transaction
-  Preparing        :                                                                                        1/1
-  Upgrading        : krb5-libs-1.16.1-2.fc28.x86_64                                                         1/5
-warning: /etc/krb5.conf created as /etc/krb5.conf.rpmnew
-  Installing       : libkadm5-1.16.1-2.fc28.x86_64                                                          2/5
-  Installing       : libss-1.43.8-2.fc28.x86_64                                                             3/5
-  Running scriptlet: libss-1.43.8-2.fc28.x86_64                                                             3/5
-  Installing       : krb5-workstation-1.16.1-2.fc28.x86_64                                                  4/5
-  Cleanup          : krb5-libs-1.16-21.fc28.x86_64                                                          5/5
-  Running scriptlet: krb5-libs-1.16-21.fc28.x86_64                                                          5/5
-  Verifying        : krb5-workstation-1.16.1-2.fc28.x86_64                                                  1/5
-  Verifying        : libkadm5-1.16.1-2.fc28.x86_64                                                          2/5
-  Verifying        : libss-1.43.8-2.fc28.x86_64                                                             3/5
-  Verifying        : krb5-libs-1.16.1-2.fc28.x86_64                                                         4/5
-  Verifying        : krb5-libs-1.16-21.fc28.x86_64                                                          5/5
-
-Installed:
-  krb5-workstation.x86_64 1.16.1-2.fc28         libkadm5.x86_64 1.16.1-2.fc28
-  libss.x86_64 1.43.8-2.fc28
-
-Upgraded:
-  krb5-libs.x86_64 1.16.1-2.fc28
-
-Complete!
 ```
 
 And now we'll do the magic trick: we'll tell Kerberos to store the TGT inside `/tmp/tgt`:
