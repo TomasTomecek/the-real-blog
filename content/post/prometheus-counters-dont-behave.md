@@ -17,6 +17,8 @@ how we run Packit - look at the number of removed lines! But sadly it broke [a
 Grafana](https://grafana.com/) chart I used almost daily. The chart shows an
 amount of traffic from GitHub webhooks Packit processes.
 
+<!--more-->
+
 This chart is wrong because it should display "current load", instead of these
 constantly increasing lines which reset at some point:
 
