@@ -5,6 +5,7 @@ theme = "hugo-steam-theme"
 disqusShortname = "tomastomecek"
 paginate = 7
 rssLimit = 7
+googleAnalytics = "G-J1S1CFZG1B"
 
 [taxonomies]
 
@@ -19,7 +20,6 @@ tag = "tags"
 	# You can choose between green, orange, red and blue.
 	themeColor = "green"
 	# Enable Google Analytics be inserting your tracking code
-	googleAnalytics = "G-J1S1CFZG1B"
 
 	# To provide some metadata for search engines and the about section in the footer
 	# feel free to add a few information about you and your website.
