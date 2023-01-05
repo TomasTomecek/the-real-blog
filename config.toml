@@ -15,7 +15,8 @@ tag = "tags"
 
 	title = "Tomáš Tomeček"
 	subtitle = "blog"
-	copyright = "[theme](https://github.com/digitalcraftsman/hugo-steam-theme) | [hugo](https://gohugo.io/) | [netlify](https://www.netlify.com/)"
+    copyright = 'This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.'
+	footerApendix = "[theme](https://github.com/digitalcraftsman/hugo-steam-theme) | [hugo](https://gohugo.io/) | [netlify](https://www.netlify.com/)"
 
 	# You can choose between green, orange, red and blue.
 	themeColor = "green"
