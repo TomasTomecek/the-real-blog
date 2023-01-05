@@ -7,6 +7,9 @@ paginate = 7
 rssLimit = 7
 googleAnalytics = "G-J1S1CFZG1B"
 
+[author]
+  name = 'Tomas Tomecek'
+
 [taxonomies]
 
 tag = "tags"
