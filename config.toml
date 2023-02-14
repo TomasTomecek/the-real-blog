@@ -11,38 +11,36 @@ googleAnalytics = "G-J1S1CFZG1B"
   name = 'Tomas Tomecek'
 
 [taxonomies]
-
-tag = "tags"
+  tag = "tags"
 
 [params]
+  title = "Tomáš Tomeček"
+  subtitle = "blog"
+  copyright = 'This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.'
+  footerApendix = "[theme](https://github.com/digitalcraftsman/hugo-steam-theme) | [hugo](https://gohugo.io/) | [netlify](https://www.netlify.com/)"
 
-	title = "Tomáš Tomeček"
-	subtitle = "blog"
-    copyright = 'This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.'
-	footerApendix = "[theme](https://github.com/digitalcraftsman/hugo-steam-theme) | [hugo](https://gohugo.io/) | [netlify](https://www.netlify.com/)"
+  # You can choose between green, orange, red and blue.
+  themeColor = "green"
+  # Enable Google Analytics be inserting your tracking code
 
-	# You can choose between green, orange, red and blue.
-	themeColor = "green"
-	# Enable Google Analytics be inserting your tracking code
+  # To provide some metadata for search engines and the about section in the footer
+  # feel free to add a few information about you and your website.
+  name = "Tomáš Tomeček"
+  bio = "Software Engineer. Coder. Beer drinker. Teacher. Speaker. Hacker."
+  description = "Technical blog. Read about Linux, Python, Containers, Red Hat, Fedora, tools."
+  location = "Brno, Czech Republic"
+  twitter = "TomasTomec"
+  github = "TomasTomecek"
 
-	# To provide some metadata for search engines and the about section in the footer
-	# feel free to add a few information about you and your website.
-	name = "Tomáš Tomeček"
-	bio = "Software Engineer. Coder. Beer drinker. Teacher. Speaker. Hacker."
-	description = "Technical blog. Read about Linux, Python, Containers, Red Hat, Fedora, tools."
-	location = "Brno, Czech Republic"
-	twitter = "TomasTomec"
-	github = "TomasTomecek"
+  # Enable a comment system
+  # You can choose between Disqus or Google Plus by setting comments
+  # to disqus or googleplus. For using Disqus you need to enter your
+  # shortname in disqusShortname at the top of the configs. 
+  comments = "disqus"
 
-	# Enable a comment system
-	# You can choose between Disqus or Google Plus by setting comments
-	# to disqus or googleplus. For using Disqus you need to enter your
-	# shortname in disqusShortname at the top of the configs. 
-	comments = "disqus"
-
-	# Customize or translate the strings
-	keepReadingStr = "Keep reading"
-	backtotopStr = "Back to top"
-	shareStr = "Share"
-	pageNotFoundTitle = "404 - Page not found"
-    useSummaryIfNoDescription = true
+  # Customize or translate the strings
+  keepReadingStr = "Keep reading"
+  backtotopStr = "Back to top"
+  shareStr = "Share"
+  pageNotFoundTitle = "404 - Page not found"
+  useSummaryIfNoDescription = true
