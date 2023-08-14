@@ -14,11 +14,11 @@ am from the travelling. Didn't have to wait long to realize why:
 - missing connections because of delays
 - never-ending transfers
 
-![Opening Flock 2023 keynote](/img/flock2023-keynote.jpg)
-
 **All of this was worth the frustration to absorb Flock energy and magic.**
 
 <!--more-->
+
+![Opening Flock 2023 keynote](/img/flock2023-keynote.jpg)
 
 Thank you, Red Hat, for funding my travel. Even though I didn't have any
 session (with [Laura](https://fosstodon.org/@lbarcziova) we wanted to talk about how we work as a team — the
