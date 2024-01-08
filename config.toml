@@ -7,6 +7,11 @@ paginate = 7
 rssLimit = 7
 googleAnalytics = "G-J1S1CFZG1B"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [author]
   name = 'Tomas Tomecek'
 
