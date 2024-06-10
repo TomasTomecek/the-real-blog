@@ -12,9 +12,6 @@ googleAnalytics = "G-J1S1CFZG1B"
     [markup.goldmark.renderer]
       unsafe = true
 
-[author]
-  name = 'Tomas Tomecek'
-
 [taxonomies]
   tag = "tags"
 
@@ -49,3 +46,5 @@ googleAnalytics = "G-J1S1CFZG1B"
   shareStr = "Share"
   pageNotFoundTitle = "404 - Page not found"
   useSummaryIfNoDescription = true
+[params.author]
+  name = 'Tomas Tomecek'
