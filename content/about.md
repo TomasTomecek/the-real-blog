@@ -4,4 +4,4 @@ draft = false
 title = "About"
 +++
 
-Tall software engineer, teacher, hacker, speaker, coder, linux enthusiast, gardener.
+Tall software engineer, teacher, speaker, coder, linux enthusiast, gardener, hiker.
