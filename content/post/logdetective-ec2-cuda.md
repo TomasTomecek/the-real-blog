@@ -1,5 +1,5 @@
 ---
-title: "Running logdetective on a EC2 VM with CUDA"
+title: "Running logdetective on an EC2 VM with CUDA"
 date: "2024-07-30T15:00:00+02:00"
 draft: false
 tags: ["AI", "LLM", "RPM"]
