@@ -1,4 +1,4 @@
---
+---
 title: "Running logdetective service in containers with CUDA on EC2"
 date: "2024-08-15T10:00:00+02:00"
 draft: false
