@@ -3,8 +3,10 @@ languageCode = "en-us"
 title = "Blog | Tomáš Tomeček"
 theme = "hugo-steam-theme"
 disqusShortname = "tomastomecek"
-paginate = 7
 rssLimit = 7
+
+[pagination]
+  pagerSize = 7
 googleAnalytics = "G-J1S1CFZG1B"
 
 [markup]
