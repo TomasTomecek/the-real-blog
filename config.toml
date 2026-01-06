@@ -5,9 +5,11 @@ theme = "hugo-steam-theme"
 disqusShortname = "tomastomecek"
 rssLimit = 7
 
+[services.googleAnalytics]
+id = "G-J1S1CFZG1B"
+
 [pagination]
   pagerSize = 7
-googleAnalytics = "G-J1S1CFZG1B"
 
 [markup]
   [markup.goldmark]
