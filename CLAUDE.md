@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with articles in this repository.
 
 ## Project Overview
 
@@ -54,9 +54,12 @@ When drafting or editing blog posts, match these patterns:
 - Rhetorical questions to transition between sections: "But how?", "What would happen?"
 - "tl;dr" for quick summaries
 - **Bold key terms** in bullet lists: `**Term**: explanation`
+- No em-dash
 
 **Technical content**: Show-don't-tell. Paste real terminal output (including actual paths like `~/git/foo/bar`). Keep commentary between code blocks brief and conversational ("How does our container look now?", "Let's check"). Let code and output speak for themselves.
 
 **Credits**: Name colleagues and link to their GitHub profiles when relevant.
 
 **Self-referencing**: Occasionally addresses himself in third person ("Tomas, just relax."). Transparent about the writing process itself.
+
+Longer paragraphs ideally split into multiple lines to ease editing.
