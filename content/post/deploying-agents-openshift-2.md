@@ -1,6 +1,6 @@
 ---
 title: "Deploying agents to OpenShift, again (part 2)"
-date: "2026-04-27T08:00:00+02:00"
+date: "2026-05-14T08:19:00+02:00"
 draft: false
 tags: ["AI", "Agents", "OpenShift"]
 ---
