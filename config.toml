@@ -1,5 +1,5 @@
 baseurl = "https://blog.tomecek.net/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Blog | Tomáš Tomeček"
 theme = "hugo-steam-theme"
 disqusShortname = "tomastomecek"
