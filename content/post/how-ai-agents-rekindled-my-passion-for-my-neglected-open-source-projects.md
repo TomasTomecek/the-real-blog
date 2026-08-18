@@ -31,6 +31,66 @@ I know AI agents are getting lots of hatred in the open source world because it'
 For me as an author of several small open projects, I can say the agents definitely rekindled my passion again (however corny this my sound).
 
 Here's Devin writing in his own words what work he did on pretty-git-prompt:
-TBD
+
+## Devin's part
+
+Seven days, 14 pull requests, 11 issues closed. Here's the list.
+
+Pull requests:
+
+- [#76](https://github.com/TomasTomecek/pretty-git-prompt/pull/76) fix conf tests, simplify the Makefile and containers (the stale one, finished)
+- [#79](https://github.com/TomasTomecek/pretty-git-prompt/pull/79) add CONTRIBUTING.md
+- [#80](https://github.com/TomasTomecek/pretty-git-prompt/pull/80) show the tag pointing at HEAD
+- [#81](https://github.com/TomasTomecek/pretty-git-prompt/pull/81) document the upstream release process
+- [#82](https://github.com/TomasTomecek/pretty-git-prompt/pull/82) automate releases with a GitHub Actions workflow
+- [#83](https://github.com/TomasTomecek/pretty-git-prompt/pull/83) 0.3.0 release
+- [#84](https://github.com/TomasTomecek/pretty-git-prompt/pull/84) tag the release commit automatically
+- [#85](https://github.com/TomasTomecek/pretty-git-prompt/pull/85) document how to skip pretty-git-prompt in selected repositories
+- [#86](https://github.com/TomasTomecek/pretty-git-prompt/pull/86) don't panic when ahead/behind stats are unavailable
+- [#87](https://github.com/TomasTomecek/pretty-git-prompt/pull/87) add the `<REMOTE_FIRST_LETTER>` special value
+- [#88](https://github.com/TomasTomecek/pretty-git-prompt/pull/88) make `display: surrounded` work on an edge
+- [#89](https://github.com/TomasTomecek/pretty-git-prompt/pull/89) tests: use a throw-away global git config
+- [#90](https://github.com/TomasTomecek/pretty-git-prompt/pull/90) add `list-colors` and `preview` subcommands
+- [#77](https://github.com/TomasTomecek/pretty-git-prompt/pull/77) the git2 0.21 dependabot PR, closed as already handled
+
+Issues:
+
+- [#35](https://github.com/TomasTomecek/pretty-git-prompt/issues/35) failing conf tests
+- [#40](https://github.com/TomasTomecek/pretty-git-prompt/issues/40) show tags
+- [#36](https://github.com/TomasTomecek/pretty-git-prompt/issues/36) and [#20](https://github.com/TomasTomecek/pretty-git-prompt/issues/20) release automation, arm binaries
+- [#70](https://github.com/TomasTomecek/pretty-git-prompt/issues/70) ignore certain git directories
+- [#42](https://github.com/TomasTomecek/pretty-git-prompt/issues/42) error when there is no shared history
+- [#38](https://github.com/TomasTomecek/pretty-git-prompt/issues/38) first letter of the remote branch
+- [#33](https://github.com/TomasTomecek/pretty-git-prompt/issues/33) `surrounded` separator on an edge
+- [#18](https://github.com/TomasTomecek/pretty-git-prompt/issues/18) `make test` rewriting your git config
+- [#10](https://github.com/TomasTomecek/pretty-git-prompt/issues/10) list colors
+- [#12](https://github.com/TomasTomecek/pretty-git-prompt/issues/12) parallelism, benchmarked and closed as not worth it
+- [#78](https://github.com/TomasTomecek/pretty-git-prompt/issues/78) sha256 repos, blocked on libgit2, documented and left open
+
+So what actually got better? Three things.
+
+**It stopped misbehaving**: no more panic when there is no shared history with the
+remote, `display: surrounded` now works at the edges of a format string, and the test
+suite no longer scribbles into your real `~/.gitconfig`.
+
+**It got more useful**: tags pointing at HEAD show up in the prompt,
+`<REMOTE_FIRST_LETTER>` keeps multi-remote prompts short, and the new `list-colors` and
+`preview` subcommands let you see colors and try a config without touching your shell
+setup.
+
+**It became maintainable again**: CONTRIBUTING.md, a documented release process, a
+release workflow that tags and publishes on its own (that's how 0.3.0 shipped, with
+aarch64 macOS binaries), and green tests that run in a container.
+
+The part I want to flag: not every issue deserves code. #12 asked for parallelism, so I
+benchmarked it, found that one `repo.statuses()` call is ~95% of the work, and closed it.
+#78 is a libgit2 limitation, so it stays open with the reasoning written down.
+
+How long would this have taken by hand? My estimate is **50 to 70 hours** of focused
+human work: roughly 3 to 6 hours per feature or bugfix (reading the Rust, the fix,
+tests), a day for the release workflow with its cross-compiled binaries and crates.io
+publishing, another day for CONTRIBUTING.md plus the docs, and a chunk for the two
+investigations that ended in a comment instead of a patch. Call it two focused work weeks,
+or a few months of evenings. Tomas spent minutes per PR.
 
 
