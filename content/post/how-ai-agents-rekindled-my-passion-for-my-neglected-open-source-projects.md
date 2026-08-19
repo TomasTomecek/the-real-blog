@@ -6,31 +6,41 @@ tags: ["AI", "Agents", "Devin"]
 ---
 
 This is a short story of how thanks to AI agents, I am again passionate about
-my open source projects, namely [pretty-git-prompt].
+my open source projects, namely [pretty-git-prompt](https://github.com/TomasTomecek/pretty-git-prompt) (p-g-p in short).
 
-I started that tool long time as a challenge to understand and learn Rust.
+TODO: add recent eclipse photo here
 
-After having the inital MVP done, I can retrospect that it took me days/weeks
-to accomplish. If I wrote it in python, it would have taken me hours. And now
+<!--more-->
+
+I started that tool a long time ago as a challenge to understand and learn Rust.
+
+After having the initial MVP done, I can retrospect that it took me days/weeks
+to accomplish. If I wrote it in Python, it would have taken me hours. And now
 with AI agents it would likely be less than an hour. This was happening in
-2018.
+2017.
 
 Now it's 2026 and I barely look at my open source projects. I can safely say
-that I do not understand p-g-p's rust codebase any more and with AI agents, I
+that I do not understand p-g-p's Rust codebase any more and with AI agents, I
 have very little incentive to refresh my Rust knowledge.
 
-Earlier this year I was working with amazing folks at Cognition and recently
-they were kind enough to give me one month of Devin Pro for free. So naturally I
-headed to p-g-p and asked Devin to review and finish [a stale PR], implement some
-new features, add CONTRIBUTING.md, add deepwiki, document release process,
-automate the release process, implement more features, ... This would have taken me *days*. I do not have that free time
-any more. With Devin it was literally minutes of my time per PR.
+Earlier this year I was working with amazing folks from Cognition and recently
+they were kind to give me one month of Devin Pro for free. So naturally I
+headed to p-g-p and asked Devin to review and finish [a stale PR](https://github.com/TomasTomecek/pretty-git-prompt/pull/76), implement some
+new features, add CONTRIBUTING.md, add Deepwiki, document release process,
+automate the release process, implement more features, ... This would have
+taken me *days*. I do not have that free time any more. With Devin it was
+literally minutes of my time per PR.
 
-I know AI agents are getting lots of hatred in the open source world because it's now so trivial to swarm a project with pull requests.
+I know AI agents are getting lots of hatred in the open source world because
+it's now so trivial to swarm a project with pull requests and security reports.
+I do not argue that. In fact, it's definitely a problem in my main work
+projects: we just can't keep up with reviews.
 
-For me as an author of several small open projects, I can say the agents definitely rekindled my passion again (however corny this my sound).
+For me as an author of several small open projects (mostly CLI tools), I can
+say the agents definitely rekindled my passion again (however corny this may
+sound).
 
-Here's Devin writing in his own words what work he did on pretty-git-prompt:
+Here's Devin writing in his own words what work he did on pretty-git-prompt.
 
 ## Devin's part
 
@@ -94,3 +104,38 @@ investigations that ended in a comment instead of a patch. Call it two focused w
 or a few months of evenings. Tomas spent minutes per PR.
 
 
+## Conclusion
+
+Pretty-git-prompt is a simple command line tool with solid test coverage. It's
+mindblowing to see that the current generation of LLMs and harnesses excel at
+working on projects of this (small) scale.
+
+After this one week I fully understand why Cognition is calling Devin the AI
+software engineer. It certainly felt like I hired a software engineer. Devin
+not only created pull requests but it also saw things through to completion without me asking for it:
+1. Updating pull requests after I did a review
+2. Watching a release to land in crates.io and Fedora Linux
+3. Inspecting GitHub action runs after we merged his PR
+
+This interaction absolutely blew me away:
+<img src="/img/devin-packit.png">
+
+My Packit CI jobs hit an intermittent issue. Devin noticed, fetched logs,
+investigated, and correctly **restarted** the jobs. Something I'd expect from a
+software engineer to do without telling them.
+
+AI tools can be of immense help when used right. It was trivial to setup Devin
+for pretty-git-prompt. Thanks to [Deepwiki](https://deepwiki.com/TomasTomecek/pretty-git-prompt) it navigated the project and the
+codebase with a breeze. The real complexity comes when your project suddenly
+needs a production deployment, integration and E2E tests that require external
+services, and other things that a basic CI job won't satisfy.
+
+Have I turned into a vibecoder? That depends on the definition. p-g-p was my
+learning experience of Rust. I don't think my Rust code was ever good. I
+totally remember hours I fought the borrow checker. In 2017 there were
+definitely times where I didn't care about the code, I just wanted it to
+compile and work. It's still the same for me today, I don't need perfect code
+for a small CLI tool. Especially in the world where an AI agent can prepare a
+performance analysis for me within minutes. Something that would take me hours
+to accomplish. I just need for the tool to work the way I expect it to and the
+code pass CI tests.
