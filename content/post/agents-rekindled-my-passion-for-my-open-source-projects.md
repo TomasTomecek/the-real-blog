@@ -1,6 +1,6 @@
 ---
 title: "How AI agents rekindled passion for my open source projects"
-date: "2026-08-30T19:00:00+02:00"
+date: "2026-08-19T19:00:00+02:00"
 draft: false
 tags: ["AI", "Agents", "Devin"]
 ---
@@ -8,7 +8,7 @@ tags: ["AI", "Agents", "Devin"]
 This is a short story of how thanks to AI agents, I am again passionate about
 my open source projects, namely [pretty-git-prompt](https://github.com/TomasTomecek/pretty-git-prompt) (p-g-p in short).
 
-TODO: add recent eclipse photo here
+<img src="/img/eclipse2026-sunset.JPG">
 
 <!--more-->
 
@@ -19,7 +19,7 @@ to accomplish. If I wrote it in Python, it would have taken me hours. And now
 with AI agents it would likely be less than an hour. This was happening in
 2017.
 
-Now it's 2026 and I barely look at my open source projects. I can safely say
+Now it's 2026 and I barely work on my open source projects. I can safely say
 that I do not understand p-g-p's Rust codebase any more and with AI agents, I
 have very little incentive to refresh my Rust knowledge.
 
