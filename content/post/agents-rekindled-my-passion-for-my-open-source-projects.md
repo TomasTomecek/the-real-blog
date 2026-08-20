@@ -24,7 +24,7 @@ that I do not understand p-g-p's Rust codebase any more and with AI agents, I
 have very little incentive to refresh my Rust knowledge.
 
 Earlier this year I was working with amazing folks from Cognition and recently
-they were kind to give me one month of Devin Pro for free. So naturally I
+they were kind to give me one month of Devin Max for free. So naturally I
 headed to p-g-p and asked Devin to review and finish [a stale PR](https://github.com/TomasTomecek/pretty-git-prompt/pull/76), implement some
 new features, add CONTRIBUTING.md, add Deepwiki, document release process,
 automate the release process, implement more features, ... This would have
