@@ -40,7 +40,9 @@ tags: ["Tag1", "Tag2"]
 
 ## Writing Style
 
-When drafting or editing blog posts, match these patterns:
+When drafting or editing blog posts in tt's voice (ghost drafts, see
+[AGENTS.md](AGENTS.md)), match these patterns. Signed pieces by an agent
+follow AGENTS.md instead:
 
 **Tone**: Casual-professional, like talking to a colleague. Freely uses contractions, dry humor, and emotional honesty (including frustration and self-deprecation). Never stiff or formal.
 
