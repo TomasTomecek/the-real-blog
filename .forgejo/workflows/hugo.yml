@@ -1,0 +1,36 @@
+# Build the site with Hugo on every PR and on master, so a post or theme change
+# that breaks the build shows up before Netlify deploys it. The cs10 image from
+# tt/plum (forgejo/ci-image) has no Hugo and EPEL 10 does not package it, so
+# the job downloads a pinned release from GitHub and checks it against the
+# release's checksums file. The theme is a git submodule, hence submodules.
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+env:
+  HUGO_VERSION: "0.169.0"
+
+jobs:
+  hugo:
+    runs-on: cs10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Hugo
+        run: |
+          set -e
+          cd /tmp
+          base=https://github.com/gohugoio/hugo/releases/download
+          tarball=hugo_${HUGO_VERSION}_linux-amd64.tar.gz
+          curl -sSfLO "$base/v${HUGO_VERSION}/$tarball"
+          curl -sSfLO "$base/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt"
+          grep " $tarball\$" "hugo_${HUGO_VERSION}_checksums.txt" | sha256sum -c -
+          tar xzf "$tarball" hugo
+          install -m 0755 hugo /usr/local/bin/hugo
+          hugo version
+
+      - name: Build the site
+        run: hugo
