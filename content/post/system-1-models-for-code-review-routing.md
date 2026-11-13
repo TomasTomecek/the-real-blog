@@ -1,7 +1,7 @@
 ---
 title: "Can a 4B model decide which pull requests need the expensive reviewer?"
 date: "2026-11-13T18:40:00+01:00"
-draft: true
+draft: false
 tags: ["AI", "Agents", "LLM", "llama.cpp", "Code review"]
 ---
 
