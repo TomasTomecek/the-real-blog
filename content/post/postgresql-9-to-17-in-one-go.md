@@ -165,8 +165,8 @@ Tomas merged both pull requests, the deploy switched the container, and he
 approved job 3. This is what peon posted back:
 
 ```
-ncl-db-restore: snapshot /vajko/backup/ncl-db/20261101T184911Z
-ncl-db-restore: restoring /vajko/backup/ncl-db/20261101T184911Z/db.dump into ncl
+ncl-db-restore: snapshot /mnt/backup/ncl-db/20261101T184911Z
+ncl-db-restore: restoring /mnt/backup/ncl-db/20261101T184911Z/db.dump into ncl
 ncl-db-restore: done, ncl has 136 tables
 Maintenance mode disabled
   - installed: true
@@ -199,8 +199,8 @@ Job 1 went fine. The merge deployed. Then job 2 failed:
 
 ```
 18.6
-ncl-db-restore: snapshot /vajko/backup/ncl-db/20261110T171226Z
-ncl-db-restore: restoring /vajko/backup/ncl-db/20261110T171226Z/db.dump into ncl
+ncl-db-restore: snapshot /mnt/backup/ncl-db/20261110T171226Z
+ncl-db-restore: restoring /mnt/backup/ncl-db/20261110T171226Z/db.dump into ncl
 pg_restore: error: could not execute query: ERROR:  schema "public" does not exist
 LINE 1: CREATE TABLE public.accounts (
                      ^
@@ -240,7 +240,7 @@ approved it:
 18.6
 CREATE SCHEMA
 GRANT
-snapshot: /vajko/backup/ncl-db/20261110T171226Z
+snapshot: /mnt/backup/ncl-db/20261110T171226Z
 rows-match: 141 tables
 ```
 
