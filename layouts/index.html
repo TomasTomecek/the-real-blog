@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="cards">
+  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post") }}
+  {{ range $paginator.Pages }}{{ partial "card.html" . }}{{ end }}
+</div>
+<nav class="pager">
+  {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">&larr; Newer</a>{{ else }}<span></span>{{ end }}
+  <a href="/articles/">All articles</a>
+  {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Older &rarr;</a>{{ else }}<span></span>{{ end }}
+</nav>
+{{ end }}

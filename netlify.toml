@@ -1,0 +1,4 @@
+# Netlify builds the live site. Keep the Hugo version in step with
+# HUGO_VERSION in .forgejo/workflows/hugo.yml, so CI builds what goes live.
+[build.environment]
+  HUGO_VERSION = "0.169.0"

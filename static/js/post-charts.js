@@ -29,24 +29,30 @@
   "use strict";
 
   var NS = "http://www.w3.org/2000/svg";
-  var RAMP = { 1: ["#2a78d6"], 2: ["#86b6ef", "#256abf"], 3: ["#86b6ef", "#2a78d6", "#104281"] };
-  var GRAY = "#a3a29b";
+  // Colours for the dark page (assets/css/main.css): blues that stay apart on
+  // the dark background, text and lines from the theme's palette.
+  var RAMP = { 1: ["#5fa2ea"], 2: ["#a9cdf6", "#4a8fe0"], 3: ["#c2dcf8", "#6ba8ec", "#3274c4"] };
+  var GRAY = "#7d7767";
+  var INK = "#f6f0df";
+  var MUTED = "#a39a82";
+  var BASELINE = "#6b6450";
+  var GRID = "#3d3828";
   var CSS =
     ".post-chart{margin:2em 0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;" +
-    "color:#0b0b0b;position:relative}" +
+    "color:" + INK + ";position:relative}" +
     ".post-chart p{font-family:inherit}" +
     ".post-chart .pc-title{font-size:15px;font-weight:600;margin:0 0 4px}" +
-    ".post-chart .pc-legend{font-size:12px;color:#52514e;margin:0 0 4px}" +
+    ".post-chart .pc-legend{font-size:12px;color:" + MUTED + ";margin:0 0 4px}" +
     ".post-chart .pc-legend span{margin-right:14px;white-space:nowrap}" +
     ".post-chart .pc-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;" +
     "margin-right:5px;vertical-align:-1px}" +
-    ".post-chart .pc-note{font-size:12px;color:#52514e;margin:4px 0 0;line-height:1.4}" +
+    ".post-chart .pc-note{font-size:12px;color:" + MUTED + ";margin:4px 0 0;line-height:1.4}" +
     ".post-chart svg{display:block;max-width:100%;overflow:visible}" +
     ".post-chart svg text{font-family:inherit}" +
     ".post-chart .pc-hit{fill:transparent;outline:none}" +
-    ".post-chart .pc-hit:hover,.post-chart .pc-hit:focus{fill:rgba(11,11,11,0.05)}" +
-    ".post-chart .pc-tip{position:absolute;pointer-events:none;background:#fff;color:#0b0b0b;" +
-    "border:1px solid rgba(11,11,11,0.15);border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.12);" +
+    ".post-chart .pc-hit:hover,.post-chart .pc-hit:focus{fill:rgba(246,240,223,0.06)}" +
+    ".post-chart .pc-tip{position:absolute;pointer-events:none;background:#29251a;color:" + INK + ";" +
+    "border:1px solid " + GRID + ";border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.4);" +
     "padding:6px 9px;font-size:12px;line-height:1.5;z-index:5;white-space:nowrap;display:none}" +
     ".post-chart .pc-tip b{display:block}" +
     ".post-chart .pc-tip i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}";
@@ -205,7 +211,7 @@
       var scale = function (v) { return ((v - min) / (panel.max - min)) * plotW; };
 
       svg.appendChild(el("text", {
-        x: x0, y: y0 + 13, "font-size": FONT, "font-weight": 600, fill: "#0b0b0b"
+        x: x0, y: y0 + 13, "font-size": FONT, "font-weight": 600, fill: INK
       }, panel.title));
 
       var top = y0 + headH;
@@ -213,10 +219,10 @@
         var x = x0 + Math.round(scale(t)) + 0.5;
         var base = t === min;
         svg.appendChild(el("line", {
-          x1: x, x2: x, y1: top, y2: top + plotH, stroke: base ? "#c3c2b7" : "#e1e0d9", "stroke-width": 1
+          x1: x, x2: x, y1: top, y2: top + plotH, stroke: base ? BASELINE : GRID, "stroke-width": 1
         }));
         svg.appendChild(el("text", {
-          x: x, y: top + plotH + 14, "font-size": 11, fill: "#898781",
+          x: x, y: top + plotH + 14, "font-size": 11, fill: MUTED,
           "text-anchor": base ? "start" : "middle"
         }, fmt(panel.tickDecimals == null ? panel : { prefix: panel.prefix, suffix: panel.suffix, decimals: panel.tickDecimals }, t)));
       });
@@ -226,8 +232,8 @@
         var by = ry + (narrow ? 20 : 6);
         if (narrow || pi === 0) {
           svg.appendChild(el("text", narrow
-            ? { x: x0, y: ry + 14, "font-size": FONT, fill: "#52514e" }
-            : { x: labelW - 12, y: ry + rowH / 2 + 4, "font-size": FONT, fill: "#52514e", "text-anchor": "end" },
+            ? { x: x0, y: ry + 14, "font-size": FONT, fill: MUTED }
+            : { x: labelW - 12, y: ry + rowH / 2 + 4, "font-size": FONT, fill: MUTED, "text-anchor": "end" },
           row));
         }
         panel.series.forEach(function (s, k) {
@@ -237,7 +243,7 @@
           var y = by + k * (barH + 2);
           svg.appendChild(el("path", { d: barPath(x0, y, w, barH), fill: barColor(panel, k, i) }));
           svg.appendChild(el("text", {
-            x: x0 + w + 6, y: y + barH / 2 + 4, "font-size": nSeries > 1 ? 11 : FONT, fill: "#0b0b0b"
+            x: x0 + w + 6, y: y + barH / 2 + 4, "font-size": nSeries > 1 ? 11 : FONT, fill: INK
           }, valueLabel(panel, s, i)));
         });
       });

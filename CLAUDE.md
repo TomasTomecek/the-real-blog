@@ -13,11 +13,14 @@ Personal technical blog built with Hugo, deployed on Netlify. Published at https
 
 ## Architecture
 
-- **Hugo static site generator** with the `hugo-steam-theme` (a forked git submodule)
+- **Hugo static site generator** with the blog's own theme, kept in this repo (no theme submodule)
 - **Content**: all blog posts live in `content/post/` as Markdown files
 - **Images**: stored in `static/img/`, referenced in posts as `/img/filename.ext`
-- **Theme**: `themes/hugo-steam-theme/` (git submodule from TomasTomecek/hugo-steam-theme)
-- **Config**: `config.toml` — site settings, analytics, Disqus comments, taxonomies
+- **Theme**: templates in `layouts/`, styles in `assets/css/` (`main.css` has the colours and fonts as variables at the top), self-hosted fonts in `static/fonts/`. Dark only, no JavaScript.
+- **Code highlighting**: Chroma at build time. `assets/css/code.css` is generated: `hugo gen chromastyles --style=catppuccin-mocha > assets/css/code.css`
+- **Pages**: `content/articles.md` is the list of all posts by year, `content/about.md` the About page; the navbar is `[[menus.main]]` in `config.toml`
+- **Config**: `config.toml` — site settings, analytics, navbar, taxonomies
+- **Hugo version**: pinned in `.forgejo/workflows/hugo.yml` (CI) and `netlify.toml` (live site); change both together
 
 ## Blog Post Conventions
 
@@ -36,7 +39,8 @@ tags: ["Tag1", "Tag2"]
 - Unsafe HTML is enabled in Goldmark renderer — posts can embed raw HTML (e.g., `<img>` tags with style attributes)
 - Only taxonomy used is tags
 - Images use raw HTML: `<img src="/img/filename.jpg" style="width: 800px;">`
-- Posts often open with an unrelated nature/landscape photo
+- Posts often open with an unrelated nature/landscape photo. The first image of a post is also its picture on the home page
+- Name the language of a fenced code block (` ```bash `, ` ```yaml `, ` ```diff `): only those blocks get colours, a block without a language renders as plain text
 
 ## Writing Style
 
