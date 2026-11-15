@@ -9,7 +9,9 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#1e1b11">
   {{ hugo.Generator }}
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   {{ $css := slice (resources.Get "css/fonts.css") (resources.Get "css/main.css") (resources.Get "css/code.css") | resources.Concat "css/site.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
   {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
