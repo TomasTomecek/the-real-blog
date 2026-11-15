@@ -1,0 +1,155 @@
+/* The blog's own theme: dark only, one text column, no JavaScript.
+   Fonts are in fonts.css, code colours in code.css (Chroma). */
+
+:root {
+  --bg: #1e1b11;
+  --surface: #29251a;
+  --rule: #3d3828;
+  --text: #e6dfcc;
+  --strong: #f6f0df;
+  --muted: #a39a82;
+  --accent: #dba600;   /* links */
+  --accent2: #8ec7a2;  /* dates, quote bars, list markers, inline code */
+
+  --font-title: "Roboto Slab", Georgia, serif;
+  --font-text: "Literata", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --col: 46rem;   /* text column */
+  --wide: 60rem;  /* navbar, footer and the widest pictures */
+}
+
+* { box-sizing: border-box; }
+html { font-size: 17px; background: var(--bg); color-scheme: dark; }
+body {
+  margin: 0; color: var(--text); background: var(--bg);
+  font-family: var(--font-text); font-size: 1.08rem; font-weight: 400; line-height: 1.7;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+::selection { background: var(--accent); color: var(--bg); }
+
+/* navbar */
+.site-head {
+  max-width: var(--wide); margin: 0 auto; padding: 1.6rem 1.25rem 1.2rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.site-name { font-family: var(--font-title); font-size: 1.55rem; font-weight: 400; color: var(--strong); }
+.site-name:hover { text-decoration: none; color: var(--accent); }
+.site-head nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; }
+.site-head nav a, .meta, .card time, .rows time, .pager, .site-foot, .page-title small, .year h2 small, .tagcloud small {
+  font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.site-head nav a { color: var(--muted); }
+.site-head nav a:hover, .site-head nav a[aria-current] { color: var(--strong); text-decoration: none; }
+.site-head nav a[aria-current] { box-shadow: 0 0.45rem 0 -0.35rem var(--accent); }
+
+main { max-width: var(--col); margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+/* headings */
+h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 400; color: var(--strong); line-height: 1.2; }
+.post-head h1, .page-title {
+  font-size: clamp(2.1rem, 5.2vw, 3.3rem); font-weight: 300; letter-spacing: -0.01em;
+  margin: 0 0 1.1rem;
+}
+.page-title small { color: var(--accent2); display: block; margin-bottom: 0.5rem; }
+.post-content h1 { font-size: 2rem; margin: 3rem 0 1rem; }
+.post-content h2 { font-size: 1.75rem; margin: 2.8rem 0 0.9rem; }
+.post-content h3 { font-size: 1.3rem; margin: 2.2rem 0 0.7rem; }
+.post-content h4 { font-size: 1.1rem; margin: 1.8rem 0 0.6rem; }
+
+/* post */
+.meta { color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.3rem 1.4rem; margin: 0 0 2.6rem; }
+.meta time { color: var(--accent2); }
+.meta .tags { display: flex; flex-wrap: wrap; row-gap: 0.3rem; }
+.meta .tags a { color: var(--muted); margin-right: 0.9rem; }
+.meta .tags a::before { content: "#"; color: var(--rule); }
+.meta .tags a:hover { color: var(--accent); }
+/* long URLs and identifiers in old posts must not widen a phone page */
+.post-content, .card { overflow-wrap: break-word; }
+.post-content p, .post-content ul, .post-content ol { margin: 0 0 1.25rem; }
+.post-content li { margin: 0.3rem 0; }
+.post-content li > ul, .post-content li > ol { margin-bottom: 0.4rem; }
+.post-content li::marker { color: var(--accent2); }
+.post-content strong { color: var(--strong); font-weight: 600; }
+.post-content hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+.post-content blockquote {
+  margin: 1.8rem 0; padding: 0.1rem 0 0.1rem 1.3rem; border-left: 3px solid var(--accent2);
+  color: var(--strong); font-size: 1.08em;
+}
+.post-content blockquote p:last-child { margin-bottom: 0; }
+
+/* Pictures: up to --wide, centred on the text column, whatever width the
+   post's inline style asks for. */
+.post-content img {
+  display: block; height: auto; border-radius: 12px; margin: 2.2rem 0;
+  max-width: min(var(--wide), 100vw - 2.5rem);
+  position: relative; left: 50%; transform: translateX(-50%);
+}
+.post-content video, .post-content iframe { max-width: 100%; }
+
+/* code */
+code, pre { font-family: var(--font-mono); font-size: 0.82em; }
+:not(pre) > code {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 5px;
+  padding: 0.1em 0.38em; color: var(--accent2); font-size: 0.8em;
+  overflow-wrap: anywhere;
+}
+a > code { color: inherit !important; }
+pre {
+  background: var(--surface) !important; border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1rem 1.15rem; margin: 1.6rem 0; overflow-x: auto; line-height: 1.55;
+  font-size: 0.8rem; color: var(--text);
+}
+.highlight .chroma { background: none; }
+pre code { font-size: inherit; }
+
+table { border-collapse: collapse; margin: 1.6rem 0; font-size: 0.92em; display: block; overflow-x: auto; }
+th, td { border-bottom: 1px solid var(--rule); padding: 0.45rem 0.9rem 0.45rem 0; text-align: left; }
+th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+
+/* home: cards */
+.card { margin: 0 0 4.2rem; }
+.card-img { display: block; margin-bottom: 1.5rem; }
+.card-img img {
+  display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover;
+  border-radius: 12px; border: 1px solid var(--rule);
+}
+.card time { color: var(--muted); }
+.card h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 300; margin: 0.5rem 0 0.7rem; }
+.card h2 a { color: var(--strong); }
+.card h2 a:hover { color: var(--accent); text-decoration: none; }
+.card p { color: var(--muted); margin: 0; }
+
+.pager { display: flex; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 1.3rem; }
+
+/* articles by year, tag pages */
+.year { display: grid; grid-template-columns: 6rem 1fr; margin-top: 2.6rem; }
+.year h2 { font-size: 1.6rem; font-weight: 300; margin: 0; color: var(--accent2); }
+.year h2 small { display: block; color: var(--muted); margin-top: 0.3rem; }
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { display: flex; gap: 1.2rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+.rows time { color: var(--muted); flex: none; min-width: 3.6rem; }
+.rows a { color: var(--text); }
+.rows a:hover { color: var(--accent); text-decoration: none; }
+.tagcloud a { display: inline-block; margin: 0 1.2rem 0.7rem 0; color: var(--text); }
+.tagcloud a:hover { color: var(--accent); text-decoration: none; }
+.tagcloud small { color: var(--muted); }
+
+.site-foot {
+  max-width: var(--wide); margin: 0 auto; padding: 1.4rem 1.25rem 2.5rem;
+  border-top: 1px solid var(--rule); color: var(--muted);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem;
+}
+.site-foot a { color: var(--muted); }
+.site-foot a:hover { color: var(--accent); }
+
+@media (max-width: 40rem) {
+  html { font-size: 16px; }
+  main { padding-top: 2.2rem; }
+  .year { grid-template-columns: 1fr; gap: 0.6rem; }
+  .post-content img, .card-img img { border-radius: 8px; }
+}

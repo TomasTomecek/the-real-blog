@@ -1,0 +1,10 @@
+{{ define "main" }}
+<h1 class="page-title">{{ if eq .Kind "term" }}<small>Tag</small> {{ end }}{{ .Title }}</h1>
+{{ if eq .Kind "taxonomy" }}
+<p class="tagcloud">{{ range .Data.Terms.ByCount }}<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <small>{{ .Count }}</small></a>{{ end }}</p>
+{{ else }}
+<ul class="rows">
+  {{ range .Pages.ByDate.Reverse }}<li><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 Jan 02" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+</ul>
+{{ end }}
+{{ end }}

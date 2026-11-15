@@ -5,11 +5,13 @@ repo and the conventions and writing style for posts.
 
 ## Validation
 
-Run `hugo` and check that it builds without errors. The theme is a git
-submodule, so in a fresh clone run `git submodule update --init` first.
+Run `hugo` and check that it builds without errors. For a change to the theme
+(`layouts/`, `assets/css/`), also look at the result in a browser at desktop
+and phone width: the home page, a post with code and pictures, Articles and a
+tag page.
 
 CI (`.forgejo/workflows/hugo.yml`) runs the same build on every PR, with a
-pinned Hugo release. Netlify builds and deploys the site from `master` of the
+pinned Hugo release; `netlify.toml` pins the same one for the live site. Netlify builds and deploys the site from `master` of the
 GitHub copy of this repo, so a merged post goes live once tt syncs `master`
 there. Nothing deploys to tt's hosts, so PRs here need no post-merge checks.
 
@@ -25,8 +27,8 @@ The issue says which kind of post it is:
 - **Signed piece**: a section or a whole post in the agent's own voice. Label
   it the way the "rekindled my passion" post labels Devin's part: tt
   introduces it in a sentence, and the section has its own H2 heading with the
-  agent's name ("## Gizela's part"). The theme renders no author field, so the
-  heading is the label. Inside it, write in the first person as the agent; the
+  agent's name ("## Gizela's part"). The theme shows tt's name under every
+  title, so the heading is the label. Inside it, write in the first person as the agent; the
   tt-specific habits from the style guide ("Tomas, just relax.", tt's photos)
   do not apply. Leave the parts tt writes (a foreword, a closing paragraph) as
   `<!-- tt: ... -->` placeholders saying what goes there.

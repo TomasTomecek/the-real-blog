@@ -2,7 +2,8 @@
 # that breaks the build shows up before Netlify deploys it. The cs10 image from
 # tt/plum (forgejo/ci-image) has no Hugo and EPEL 10 does not package it, so
 # the job downloads a pinned release from GitHub and checks it against the
-# release's checksums file. The theme is a git submodule, hence submodules.
+# release's checksums file. Netlify builds the live site with the Hugo version
+# in netlify.toml: keep it equal to HUGO_VERSION here.
 on:
   pull_request:
   push:
@@ -16,8 +17,6 @@ jobs:
     runs-on: cs10
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
 
       - name: Install Hugo
         run: |

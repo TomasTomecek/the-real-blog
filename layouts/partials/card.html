@@ -1,0 +1,9 @@
+{{ $img := "" }}
+{{ with findRESubmatch `<img[^>]+src="([^"]+)"` .RawContent 1 }}{{ $img = index (index . 0) 1 }}{{ end }}
+{{ if not $img }}{{ with findRESubmatch `!\[[^\]]*\]\(([^) ]+)` .RawContent 1 }}{{ $img = index (index . 0) 1 }}{{ end }}{{ end }}
+<article class="card">
+  {{ with $img }}<a class="card-img" href="{{ $.RelPermalink }}" tabindex="-1"><img src="{{ . }}" alt="" loading="lazy"></a>{{ end }}
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Monday, 2 Jan 2006" }}</time>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p>{{ .Summary | plainify | htmlUnescape | truncate 240 }}</p>
+</article>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  <meta name="author" content="{{ .Site.Params.name }}">
+  <meta name="description" content="{{ if .IsPage }}{{ .Summary | plainify | htmlUnescape | truncate 200 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#1e1b11">
+  {{ hugo.Generator }}
+  <link rel="icon" href="/img/favicon.ico">
+  {{ $css := slice (resources.Get "css/fonts.css") (resources.Get "css/main.css") (resources.Get "css/code.css") | resources.Concat "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+  {{ end }}
+  {{- if hugo.IsProduction }}{{ partial "google_analytics.html" . }}{{ end }}
+</head>
+<body>
+  <header class="site-head">
+    <a class="site-name" href="/">{{ .Site.Params.name }}</a>
+    <nav>
+      {{ $cur := . }}
+      {{ range .Site.Menus.main }}<a href="{{ .URL }}"{{ if $cur.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>{{ end }}
+      <a href="/index.xml">RSS</a>
+    </nav>
+  </header>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-foot">
+    <span>&copy; {{ now.Format "2006" }} {{ .Site.Params.name }} · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span>
+    <span><a href="https://github.com/{{ .Site.Params.github }}">GitHub</a> · <a href="/index.xml">RSS</a></span>
+  </footer>
+</body>
+</html>
