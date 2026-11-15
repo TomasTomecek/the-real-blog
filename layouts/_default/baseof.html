@@ -20,7 +20,10 @@
 </head>
 <body>
   <header class="site-head">
-    <a class="site-name" href="/"><img class="site-logo" src="/img/favicon.svg" alt="" width="32" height="32">{{ .Site.Params.name }}</a>
+    <div class="site-brand">
+      <a class="site-name" href="/"><img class="site-logo" src="/img/favicon.svg" alt="" width="32" height="32">{{ .Site.Params.name }}</a>
+      {{- with .Site.Params.tagline }}<span class="site-tagline">{{ . }}</span>{{ end }}
+    </div>
     <nav>
       {{ $cur := . }}
       {{ range .Site.Menus.main }}<a href="{{ .URL }}"{{ if $cur.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>{{ end }}
