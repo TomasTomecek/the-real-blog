@@ -37,6 +37,11 @@ Every post lands as a pull request with `draft: true` in the front matter.
 tt flips it to `false` when the post is ready, so merging by mistake does not
 publish it. Do not change `draft` on a post yourself.
 
+tt edits posts by pushing to the pull request's branch, so before you open
+one, make sure tt can push to your fork: tt is a collaborator on it with write
+access, and the pull request allows edits from maintainers. When tt has pushed
+to the branch, fetch it and build on tt's commits; never force-push over them.
+
 tt adds the images. Where a photo belongs (posts usually open with one), leave
 a `<!-- tt: photo -->` placeholder.
 
