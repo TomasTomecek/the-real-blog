@@ -24,10 +24,7 @@ id = "G-J1S1CFZG1B"
 [params]
   name = "Tomáš Tomeček"
   tagline = "tall software engineer"
-  bio = "Tall software engineer, teacher, speaker, coder, linux enthusiast, gardener, hiker."
   description = "Technical blog. Read about Linux, Python, Containers, Red Hat, Fedora, tools."
-  location = "Brno, Czech Republic"
-  twitter = "TomasTomec"
   github = "TomasTomecek"
 [params.author]
   name = 'Tomas Tomecek'
